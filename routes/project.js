@@ -22,16 +22,18 @@ exports.addProject = function(req, res) {
   // make a new Project and save it to the DB
   // YOU MUST send an OK response w/ res.send();
   var newProject = new models.Project({
-    "title": form_data.title,
+    "title": form_data.project_title,
     "date": form_data.date,
     "summary": form_data.summary,
-    "image": form_data.image
+    "image": form_data.image_url
   });
   //form_data.save(afterSaving);
   newProject.save(afterSaving);
 
   function afterSaving(err) {
-    if(err) {console.log(err); res.send(500);}
+    if(err) 
+      console.log(err);
+    res.send();
     res.redirect('/');
   }
 
